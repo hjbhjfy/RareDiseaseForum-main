@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.backend.modules.dao.ForumDiscoverDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.backend.modules.entity.mysql.ForumDiscoverEntity" id="forumDiscoverMap">
+        <result property="discoverId" column="discover_id"/>
+        <result property="uId" column="u_id"/>
+        <result property="discoverTitle" column="discover_title"/>
+        <result property="discoverContent" column="discover_content"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+<!-- 查询推文-->
+    <select id="selectTweets" resultType="ForumDiscoverEntity">
+        SELECT discover_id, discover_title, src
+        FROM forum_discover
+        WHERE is_deleted = 0
+        ORDER BY create_time DESC
+        LIMIT 10
+    </select>
+
+<!--&lt;!&ndash;搜索框查找&ndash;&gt;-->
+<!--    <select id="selectRecommendations" resultType="ForumDiscoverEntity">-->
+<!--        SELECT discover_id, discover_title, discover_content, src-->
+<!--        FROM forum_discover-->
+<!--        WHERE is_deleted = 0 AND discover_content IS NOT NULL-->
+<!--        ORDER BY update_time DESC-->
+<!--        LIMIT 10-->
+<!--    </select>-->
+
+<!--中间框查找-->
+    <select id="selectMiddleBoxContents" resultType="ForumDiscoverEntity">
+        SELECT discover_id, discover_title, discover_content
+        FROM forum_discover
+        WHERE is_deleted = 0 AND discover_content IS NOT NULL
+        ORDER BY update_time DESC
+        LIMIT 5
+    </select>
+</mapper>

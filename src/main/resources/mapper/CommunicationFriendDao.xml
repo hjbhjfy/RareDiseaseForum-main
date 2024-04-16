@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.backend.modules.dao.CommunicationFriendDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.backend.modules.entity.mysql.CommunicationFriendEntity" id="communicationFriendMap">
+        <result property="communicationFriendId" column="communication_friend_id"/>
+        <result property="uId" column="u_id"/>
+        <result property="diseaseId" column="disease_id"/>
+        <result property="content" column="content"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
